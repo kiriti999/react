@@ -7,23 +7,49 @@ function App() {
   const [people, setpeople] = useState(data);
   const [index, setindex] = useState(0);
 
-  useEffect(() => {
-    const lastIndex = people.length - 1;
-    if (index < 0) {
-      setindex(lastIndex);
-    }
+  // useEffect(() => {
+  //   const lastIndex = people.length - 1;
+  //   if (index < 0) {
+  //     setindex(lastIndex);
+  //   }
 
-    if (index === people.length) {
-      setindex(0);
-    }
-  }, [index, people])
+  //   if (index === people.length) {
+  //     setindex(0);
+  //   }
+  // }, [index, people])
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setindex(index + 1)
+      setindex((oldIndex) => {
+        let index = oldIndex + 1;
+        if (index > people.length - 1) {
+          index = 0;
+        }
+        return index;
+      })
     }, 2000);
     return (() => clearInterval(interval))
   }, [index])
+
+  const nextSlide = () => {
+    setindex((oldIndex) => {
+      let index = oldIndex + 1;
+      if (index > people.length - 1) {
+        index = 0;
+      }
+      return index;
+    })
+  }
+
+  const prevSlide = () => {
+    setindex((oldIndex) => {
+      let index = oldIndex - 1;
+      if (index < 0) {
+        index = people.length - 1;
+      }
+      return index;
+    })
+  }
 
   return (
     <section className="section">
@@ -54,10 +80,10 @@ function App() {
             </article>
           )
         })}
-        <button className="prev" onClick={() => setindex(index - 1)}>
+        <button className="prev" onClick={nextSlide}>
           <FiChevronLeft></FiChevronLeft>
         </button>
-        <button className="next" onClick={() => setindex(index + 1)}>
+        <button className="next" onClick={prevSlide}>
           <FiChevronRight></FiChevronRight>
         </button>
       </div>
