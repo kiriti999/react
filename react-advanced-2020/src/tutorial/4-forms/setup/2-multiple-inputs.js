@@ -55,7 +55,7 @@ const ControlledInputs = () => {
             <div className='item' key={id}>
               <h4>{firstName}</h4>
               <p>{email}</p>
-              <p>age</p>
+              <p>{age}</p>
             </div>
           );
         })}
