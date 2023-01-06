@@ -1,5 +1,5 @@
 /*
-=============== 
+===============
 Variables
 ===============
 */
@@ -45,7 +45,7 @@ Variables
   --fixed-width: 620px;
 }
 /*
-=============== 
+===============
 Global Styles
 ===============
 */
@@ -135,7 +135,7 @@ p {
 }
 
 /*
-=============== 
+===============
 Navbar
 ===============
 */
@@ -229,4 +229,12 @@ nav {
   .social-icons a:hover {
     color: var(--clr-primary-7);
   }
+}
+
+.df {
+  display: flex;
+}
+
+.space-between {
+  justify-content: space-between;
 }

@@ -1,9 +1,13 @@
 import React from 'react'
 import Navbar from './Navbar'
+import Sidebar from './Sidebar'
+import logo from './logo.svg'
+import { FaBars, FaTwitter } from 'react-icons/fa'
+
 function App() {
   return (
     <>
-      <h2>navbar project setup</h2>
+      <Navbar></Navbar>
     </>
   )
 }
