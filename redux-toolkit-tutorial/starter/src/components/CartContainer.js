@@ -1,18 +1,11 @@
 import React from 'react';
-import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import CartItem from "./CartItem";
-import { clearCart, calculateTotals } from '../features/cart/cartSlice';
-import { openModal, closeModal } from "../features/modal/modalSlice";
+import { openModal } from "../features/modal/modalSlice";
 
 const CartContainer = () => {
     const dispatch = useDispatch();
     const { amount, total, cartItems } = useSelector((store) => store.cart);
-
-    useEffect(() => {
-        dispatch(calculateTotals())
-    }, [cartItems, dispatch])
-
 
     if (amount < 1) {
         return (
@@ -31,7 +24,7 @@ const CartContainer = () => {
                 <h2>your bag</h2>
             </header>
             <div>
-                {cartItems.map((item) => {
+                {cartItems.forEach((item) => {
                     if (!item.amount <= 0) {
                         return <CartItem key={item.id} {...item}>{item.name}</CartItem>
                     }
